@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block content %}
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-sm-4 col-sm-offset-4">
+
+                {% if error %}
+                    <div class="text-center">
+                        {{ error }}
+                    </div>
+                <br>
+
+                {% endif %}
+
+                <form method="POST" action="{% url 'login' %}">
+                    {% csrf_token %}
+                    <div class="text-center">
+                        <img src="{% static 'logo.png' %}" height=50 width=50 class="mt-2" >
+                        <h1 class="h3 mb-3 fw-normal">Create your account below!</h1>
+                        <input type="text" name="inputUsername" class="form-control" placeholder="Username" required autofocus>
+                        <br>
+                        <input type="password"  name="inputPassword" class="form-control" placeholder="Password" required>
+                        <br>
+                        <button class="w-100 btn btn-lg btn-dark" type="submit">Login</button>
+                    </div>
+                </form>
+                
+            </div>
+            <div class="col"></div>
+        </div>
+    </div>
+    
+  
+
+
+
+
+{% endblock %}
