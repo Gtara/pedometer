@@ -1,9 +1,40 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 
 {% block content %}
 
-block
+    <div class="container">
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-sm-4 col-sm-offset-4">
+                {% if error %}
+                    <div class="text-center">
+                        {{ error }}
+                    </div>
+                <br>
+                {% endif %}
+                <form method="POST" action="{% url 'home' %}">
+                    {% csrf_token %}
+                    <div class="text-center">
+                        <img src="{% static 'logo.png' %}" height=50 width=50 class="mt-2" >
+                        <h1 class="h3 mb-3 fw-normal">Enter you data here!</h1>
+                        <input type="number" name="steps" class="form-control" min="1" max="50000" placeholder="Number of Steps" required autofocus>
+                        <br>
+                        <input type="date"  name="date" class="form-control" placeholder="Date" required>
+                        <br>
+                        <button class="w-100 btn btn-lg btn-dark" type="submit">Done!</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col"></div>
+        </div>
+    </div> 
+    
+  
+
+
+
 
 {% endblock %}
-
